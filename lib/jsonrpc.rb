@@ -21,7 +21,7 @@ module JsonRPC
         result = JSON.parse(connection.post(@address.path, {:method => method.to_s, :params => params}.to_json, h).body)
       end
       if error = result["error"]
-        raise JsonRPCError, error["message"]
+        raise JsonRPCError, error.inspect
       end
       result
     end
